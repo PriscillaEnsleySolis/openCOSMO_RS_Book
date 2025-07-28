@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -430,35 +430,35 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#from the cosmo_visualizations code in our src folder</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">opencosmorspy.cosmo_visualizations</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_sigma_profiles</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">opencosmorspy.cosmo_visualizations</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_3D_segment_location</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">opencosmorspy.cosmo_visualizations</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_extended_sigma_profile_plotly</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">opencosmorspy.cosmo_visualizations</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_sigma_profiles_plotly</span>
+<span class="kn">from</span> <span class="nn">opencosmorspy.cosmo_visualizations</span> <span class="kn">import</span> <span class="n">plot_sigma_profiles</span>
+<span class="kn">from</span> <span class="nn">opencosmorspy.cosmo_visualizations</span> <span class="kn">import</span> <span class="n">plot_3D_segment_location</span>
+<span class="kn">from</span> <span class="nn">opencosmorspy.cosmo_visualizations</span> <span class="kn">import</span> <span class="n">plot_extended_sigma_profile_plotly</span>
+<span class="kn">from</span> <span class="nn">opencosmorspy.cosmo_visualizations</span> <span class="kn">import</span> <span class="n">plot_sigma_profiles_plotly</span>
 
 <span class="c1">#from the cosmors code in our src folder</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">opencosmorspy.cosmors</span><span class="w"> </span><span class="kn">import</span> <span class="n">COSMORS</span> 
+<span class="kn">from</span> <span class="nn">opencosmorspy.cosmors</span> <span class="kn">import</span> <span class="n">COSMORS</span> 
 
 <span class="c1">#from the input_parsers code in our src folder</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">opencosmorspy.input_parsers</span><span class="w"> </span><span class="kn">import</span> <span class="n">SigmaProfileParser</span>
+<span class="kn">from</span> <span class="nn">opencosmorspy.input_parsers</span> <span class="kn">import</span> <span class="n">SigmaProfileParser</span>
 
 <span class="c1">#from the parameterization code in our src folder</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">opencosmorspy.parameterization</span><span class="w"> </span><span class="kn">import</span> <span class="n">Parameterization</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">opencosmorspy.parameterization</span><span class="w"> </span><span class="kn">import</span> <span class="n">openCOSMORS24a</span>
+<span class="kn">from</span> <span class="nn">opencosmorspy.parameterization</span> <span class="kn">import</span> <span class="n">Parameterization</span>
+<span class="kn">from</span> <span class="nn">opencosmorspy.parameterization</span> <span class="kn">import</span> <span class="n">openCOSMORS24a</span>
 
 <span class="c1">#other libraries:</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">plotly</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.constants</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">spcon</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">tabulate</span><span class="w"> </span><span class="kn">import</span> <span class="n">tabulate</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">kaleido</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">fsolve</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">plotly</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">scipy.constants</span> <span class="k">as</span> <span class="nn">spcon</span>
+<span class="kn">from</span> <span class="nn">tabulate</span> <span class="kn">import</span> <span class="n">tabulate</span>
+<span class="kn">import</span> <span class="nn">kaleido</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span>
+<span class="kn">from</span> <span class="nn">rdkit</span> <span class="kn">import</span> <span class="n">Chem</span>
 <span class="n">periodic_table</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">GetPeriodicTable</span><span class="p">()</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">constants</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">constants</span>
 </pre></div>
 </div>
 </div>
@@ -782,7 +782,7 @@ Combinatorial logarithmic activity coefficient using cosmo: [[-0.18433794 -0.179
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1fd582ea7cacdc43841da55a6d0339368a80b31f65fffeaa24cf1a09ec731fa9.png" src="../../_images/1fd582ea7cacdc43841da55a6d0339368a80b31f65fffeaa24cf1a09ec731fa9.png" />
+<img alt="../../_images/555860ff85d4b8578354ac4ec1428e0e95084fe537dc3403779356bf74975aec.png" src="../../_images/555860ff85d4b8578354ac4ec1428e0e95084fe537dc3403779356bf74975aec.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -947,7 +947,7 @@ Combinatorial logarithmic activity coefficient: [[-0.32038643  0.        ]
  [-0.04942021 -0.07665708]]
 </pre></div>
 </div>
-<img alt="../../_images/24ccc01fffe89ff86fd02006b382d14a1300585355070438ca7219ab7a4e0637.png" src="../../_images/24ccc01fffe89ff86fd02006b382d14a1300585355070438ca7219ab7a4e0637.png" />
+<img alt="../../_images/311ef83a053338fbab66d2ccc482201ede7d2f7faecb804ecf3f77167f35d0fa.png" src="../../_images/311ef83a053338fbab66d2ccc482201ede7d2f7faecb804ecf3f77167f35d0fa.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Descriptors for ethanol
 energy_dielectric -25.10678663745665
 dipole_moment [-0.047311 -2.168231 -0.003471]
@@ -960,7 +960,7 @@ sigma_hydrogen_bond_acceptor_moments [4.83881932 2.87393992 1.31282655]
 -----------------------------------------------
 </pre></div>
 </div>
-<img alt="../../_images/d161c785cc1736d87cd2b13a00d04a54c188e639573eb85e181ecb9447f5b06e.png" src="../../_images/d161c785cc1736d87cd2b13a00d04a54c188e639573eb85e181ecb9447f5b06e.png" />
+<img alt="../../_images/b844cc4246ce59376d5867d29a1ece78e9f92a58b3599db7ee52a827513fac73.png" src="../../_images/b844cc4246ce59376d5867d29a1ece78e9f92a58b3599db7ee52a827513fac73.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Descriptors for water
 energy_dielectric -32.88772262001589
 dipole_moment [ 4.500000e-05 -2.302853e+00  0.000000e+00]
@@ -988,10 +988,10 @@ sigma_hydrogen_bond_acceptor_moments [5.77724896 3.3268231  1.38458782]
 <span class="n">t_fusion</span> <span class="o">=</span> <span class="mf">443.6</span> <span class="c1"># Fusion temperature of the solute (K)</span>
 <span class="n">temperature</span> <span class="o">=</span> <span class="mf">298.15</span>  <span class="c1"># Temperature for the solubility calculation (K)</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">calc_solubility</span><span class="p">(</span><span class="n">crs</span><span class="p">,</span> <span class="n">delta_h_fusion</span><span class="p">,</span> <span class="n">t_fusion</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">iterative</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">calc_solubility</span><span class="p">(</span><span class="n">crs</span><span class="p">,</span> <span class="n">delta_h_fusion</span><span class="p">,</span> <span class="n">t_fusion</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">iterative</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="n">rhs</span> <span class="o">=</span> <span class="o">-</span><span class="n">delta_h_fusion</span> <span class="o">/</span> <span class="n">R</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">temperature</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">t_fusion</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_gamma</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">calculate_gamma</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
         <span class="n">crs</span><span class="o">.</span><span class="n">clear_jobs</span><span class="p">()</span>
         <span class="n">crs</span><span class="o">.</span><span class="n">add_job</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">refst</span><span class="o">=</span><span class="s1">&#39;pure_component&#39;</span><span class="p">)</span>
         <span class="n">results</span> <span class="o">=</span> <span class="n">crs</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
@@ -1001,7 +1001,7 @@ sigma_hydrogen_bond_acceptor_moments [5.77724896 3.3268231  1.38458782]
         <span class="n">ln_gamma_inf</span> <span class="o">=</span> <span class="n">calculate_gamma</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]))</span> 
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">rhs</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">ln_gamma_inf</span><span class="p">)</span>
     
-    <span class="k">def</span><span class="w"> </span><span class="nf">equilibrium_condition</span><span class="p">(</span><span class="n">x_guess</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">equilibrium_condition</span><span class="p">(</span><span class="n">x_guess</span><span class="p">):</span>
         <span class="n">x_guess</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">1e-15</span><span class="p">,</span> <span class="n">x_guess</span><span class="p">)</span>
         <span class="n">x_guess</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">x_guess</span><span class="p">)</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x_guess</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">x_guess</span><span class="p">])</span>
@@ -1075,7 +1075,7 @@ sigma_hydrogen_bond_acceptor_moments [5.77724896 3.3268231  1.38458782]
 
 <span class="n">crs</span> <span class="o">=</span> <span class="n">COSMORS</span><span class="p">(</span><span class="n">par</span><span class="o">=</span><span class="n">openCOSMORS24a</span><span class="p">())</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">calculte_liquid_molar_volume_25C</span><span class="p">(</span><span class="n">spp</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">calculte_liquid_molar_volume_25C</span><span class="p">(</span><span class="n">spp</span><span class="p">):</span>
     <span class="n">spp</span><span class="o">.</span><span class="n">calculate_sigma_moments</span><span class="p">()</span>
 
     <span class="n">molecule_is_water</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">spp</span><span class="p">[</span><span class="s1">&#39;atm_elmnt&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="p">[</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">]</span>
@@ -1101,11 +1101,11 @@ sigma_hydrogen_bond_acceptor_moments [5.77724896 3.3268231  1.38458782]
 
     <span class="k">return</span> <span class="n">molar_volume_at_25C</span> <span class="o">/</span> <span class="mi">1_000_000</span> <span class="c1"># m³/mol</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">read_gas_phase_energy</span><span class="p">(</span><span class="n">gas_file</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">read_gas_phase_energy</span><span class="p">(</span><span class="n">gas_file</span><span class="p">):</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">gas_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
     
-<span class="k">def</span><span class="w"> </span><span class="nf">calculate_number_of_atoms_in_ring</span><span class="p">(</span><span class="n">gas_file</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">calculate_number_of_atoms_in_ring</span><span class="p">(</span><span class="n">gas_file</span><span class="p">):</span>
     <span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromXYZFile</span><span class="p">(</span><span class="n">gas_file</span><span class="p">)</span>
     <span class="n">number_of_atoms_in_ring</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">mol</span><span class="o">.</span><span class="n">GetAtoms</span><span class="p">():</span>
@@ -1113,7 +1113,7 @@ sigma_hydrogen_bond_acceptor_moments [5.77724896 3.3268231  1.38458782]
             <span class="n">number_of_atoms_in_ring</span> <span class="o">=</span> <span class="n">number_of_atoms_in_ring</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">number_of_atoms_in_ring</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">calculate_dGsolvation</span><span class="p">(</span><span class="n">solute_file</span><span class="p">,</span> <span class="n">solute_gas_file</span><span class="p">,</span> <span class="n">solvent_file</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">calculate_dGsolvation</span><span class="p">(</span><span class="n">solute_file</span><span class="p">,</span> <span class="n">solute_gas_file</span><span class="p">,</span> <span class="n">solvent_file</span><span class="p">):</span>
     
     <span class="n">kJ_per_kcal</span> <span class="o">=</span> <span class="mf">4.184</span>  
     <span class="n">kJdivmol_per_hartree</span> <span class="o">=</span> <span class="mf">2625.499639479</span> <span class="c1"># (kJ/mol)/hartree</span>
@@ -1168,7 +1168,7 @@ sigma_hydrogen_bond_acceptor_moments [5.77724896 3.3268231  1.38458782]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Solvation energy of ethanol in benzene in kcal/mol: -3.116283419034712
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Solvation energy of ethanol in benzene in kcal/mol: -3.116283418975341
 </pre></div>
 </div>
 </div>
