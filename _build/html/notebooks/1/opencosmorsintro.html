@@ -452,7 +452,18 @@ In the 1970s, research concentrated on treating the solvent as a continuous medi
 <section id="real-fluids-vs-ideal-ones">
 <h2>Real fluids vs ideal ones 💧<a class="headerlink" href="#real-fluids-vs-ideal-ones" title="Link to this heading">#</a></h2>
 <p>As mentioned, fluids are being visualized as ideally screened where two segments with opposite surface charge densities interact perfectly so their net energy is zero. However, with real fluids it is not possible due to entropy and the non-ideal nature of molecular interactions; therefore, they do not cancel perfectly each other’s charges. These non-ideal parings result in a <strong>“misfit energy”</strong>.</p>
-<p>The misfit energy represents the interaction energy of two segments with unequal surface charges. This situation occurs because the solute’s surface segments pair with other surface segments with a charge density that not equal to the opposite of its charge density, resulting in a mismatch or misfit energy that balances the non-ideal screening. The misfit energy quantifies the interaction energy of two segments interacting with radius <span class="math notranslate nohighlight">\(R_{eff}\)</span> and surface charges <span class="math notranslate nohighlight">\(\sigma_1, \sigma_2\)</span>.</p>
+<p>The misfit energy represents the interaction energy of two segments with unequal surface charges. This situation occurs because the solute’s surface segments pair with other surface segments with a charge density that not equal to the opposite of its charge density, resulting in a mismatch or misfit energy that balances the non-ideal screening. The misfit energy quantifies the interaction energy of two segments interacting with radius <span class="math notranslate nohighlight">\(R_{eff}\)</span> and surface charges <span class="math notranslate nohighlight">\(\sigma_1, \sigma_2\)</span>.
+The total misfit energy is the sum of the misfit energies for all of its surface segments:</p>
+<p><span class="math notranslate nohighlight">\(E^x_{mf} = \frac{1}{2} \alpha \Sigma \sigma_\nu^2 = \frac{1}{2} \alpha N^x \int p^x(\sigma)\sigma^2 d\sigma\)</span></p>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\alpha=\frac{1.2\pi^{5/2}R_{eff}^3}{(4\pi\epsilon_0)}\)</span>, is constant that scales the interaction energy based on the geometry and properties of the segments</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma_\nu\)</span> is the averaged screening charge density</p></li>
+<li><p><span class="math notranslate nohighlight">\(N^x\)</span> is the total number of effective surface segments.</p></li>
+</ul>
+<p>The way the surface segments are arranged is limited by the shapes of the molecules. However, COSMO-RS simplifies the calculations by ignoring these constraints. This means that the segments are treated as if they can pair freely, a concept known as decoupling.This means we can think of the liquid as being made up of N parts, each with their own surface charge density, <span class="math notranslate nohighlight">\(\sigma\)</span>.  The lowest possible misfit energy (“ground state”) <span class="math notranslate nohighlight">\(E_s^{GS}\)</span> is reached when segments are paired such that the sum <span class="math notranslate nohighlight">\(\sigma_{+i} + \sigma_{−i}\)</span>) is minimised:</p>
+<p><span class="math notranslate nohighlight">\(E_s^{GS} = \frac{1}{2}\alpha'\sum_{i=1}^{N/2}(\sigma_{+i} + \sigma_{-i})^2\)</span></p>
+<p>The value of the misfit energy of the ground state tells us how <strong>good</strong> a fluid is at screening its own molecules; therefore, the <strong>lower</strong> the misfit energy, the <strong>better</strong> the screening.</p>
 </section>
 <section id="what-is-opencosmo-rs">
 <h2>What is openCOSMO-RS ❓<a class="headerlink" href="#what-is-opencosmo-rs" title="Link to this heading">#</a></h2>
@@ -469,13 +480,18 @@ In the 1970s, research concentrated on treating the solvent as a continuous medi
 <p>More information about its implementation can be found <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0378381222000954">here</a>.</p>
 <section id="opencosmo-rs-24a">
 <h3>openCOSMO-RS 24a 💫<a class="headerlink" href="#opencosmo-rs-24a" title="Link to this heading">#</a></h3>
-<p>The openCOSMO-RS 24a is a new and improved version of the open-source COSMO-RS model. This version is designed to predict <strong>solvation free energies</strong> using quantum chemical calculations from ORCA. More information about it can be found <a class="reference external" href="https://doi.org/10.1016/j.fluid.2024.114250">here</a>
-<span id="id6"><sup><a class="reference internal" href="../references.html#id6" title="Simon Müller, Thomas Nevolianis, Miquel Garcia-Ratés, Christoph Riplinger, Kai Leonhard, and Irina Smirnova. Predicting solvation free energies for neutral molecules in any solvent with opencosmo-rs. Fluid Phase Equilibria, 589:114250, 2025. URL: https://www.sciencedirect.com/science/article/pii/S0378381224002255, doi:https://doi.org/10.1016/j.fluid.2024.114250.">5</a></sup></span></p>
+<p>The openCOSMO-RS 24a is a new and improved version of the open-source COSMO-RS model. This version is designed to predict <strong>solvation free energies</strong> using quantum chemical calculations from ORCA <span id="id6"><sup><a class="reference internal" href="../references.html#id6" title="Simon Müller, Thomas Nevolianis, Miquel Garcia-Ratés, Christoph Riplinger, Kai Leonhard, and Irina Smirnova. Predicting solvation free energies for neutral molecules in any solvent with opencosmo-rs. Fluid Phase Equilibria, 589:114250, 2025. URL: https://www.sciencedirect.com/science/article/pii/S0378381224002255, doi:https://doi.org/10.1016/j.fluid.2024.114250.">5</a></sup></span>.</p>
 </section>
 <section id="what-is-the-solvation-free-energy-gsolv">
 <h3>What is the solvation free energy, ΔGsolv? ⚡<a class="headerlink" href="#what-is-the-solvation-free-energy-gsolv" title="Link to this heading">#</a></h3>
 <p>It is the amount of energy involved when a solute dissolves from the gas phase into a solvent. It is the energy change that occurs when the particles of the solute are surrounded and stabilized by the solvent molecules. It is a contributing factor in predicting how substances will behave in a solution. <br></p>
-<p>A positive solvation free energy value shows that the process is not energetically favourable. This means that the solute wants to stay in the gas phase, whereas a negative value shows that the process is energetically favourable, meaning that the solute prefers to be in the solvent.</p>
+<p>A positive solvation free energy value shows that the process is not energetically favourable. This means that the solute wants to stay in the gas phase, whereas a negative value shows that the process is energetically favourable, meaning that the solute prefers to be in the solvent. The model can calculate this property using the following improvements:</p>
+<ul class="simple">
+<li><p><strong>QSPR model</strong>: A QSPR model is a way of using a molecule’s structure to predict the molar volumes of the solvents</p></li>
+<li><p><strong>Gas Calculation</strong> The workflow was improved and a gas phase energy calculation was included, using a newer version of ORCA.</p></li>
+</ul>
+<p>More information about it can be found <a class="reference external" href="https://doi.org/10.1016/j.fluid.2024.114250">here</a>
+<span id="id7"><sup><a class="reference internal" href="../references.html#id6" title="Simon Müller, Thomas Nevolianis, Miquel Garcia-Ratés, Christoph Riplinger, Kai Leonhard, and Irina Smirnova. Predicting solvation free energies for neutral molecules in any solvent with opencosmo-rs. Fluid Phase Equilibria, 589:114250, 2025. URL: https://www.sciencedirect.com/science/article/pii/S0378381224002255, doi:https://doi.org/10.1016/j.fluid.2024.114250.">5</a></sup></span></p>
 <div>
 </section>
 </section>
